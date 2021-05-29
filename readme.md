@@ -37,7 +37,7 @@ func main(){}
 * float -> C.float
 * double -> C.double
 * char -> C.char
-* string -> C.CString
+* string -> *C.char
 * boolean -> C.boolean
 
 ## Go类型与C/C++ 复杂类型转换 Struct
