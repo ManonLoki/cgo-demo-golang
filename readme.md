@@ -63,17 +63,26 @@ func DisplayUser(user C.User){
 
 ## 导出为静态库
 ```shell
-go build -x -v -ldflags "-s -w" -buildmode=c-archive -o [LibName] ./{Go File Name} 
+go build -ldflags "-s -w" -buildmode=c-archive -o [LibName] ./{Go File Name} 
 # 例子
-go build -x -v -ldflags "-s -w" -buildmode=c-archive -o cgo_demo.a ./
+go build -ldflags "-s -w" -buildmode=c-archive -o cgo_demo.a ./
 ```
 
 ## 导出为动态链接库
 
 ```shell
 # 命令
-go build -o [LibName] -buildmode=c-shared ./{Go File Name}
+go build  -ldflags "-s -w" -buildmode=c-shared -o [LibName] ./{Go File Name}
 
 # 例子
-go build -o cgo_demo.dylib -buildmode=c-shared ./
+go build  -ldflags "-s -w" -buildmode=c-shared  -o cgo_demo.dylib ./
+```
+
+## Mac下对其他sdk的支持
+```shell
+# 前面添加
+CGO_CFLAGS=-mmacosx-version-min=[Sdk Version] CGO_LDFLAGS=-mmacosx-version-min=[Sdk Version] 
+
+#例子
+CGO_CFLAGS=-mmacosx-version-min=10.10 CGO_LDFLAGS=-mmacosx-version-min=10.10 go build  -ldflags "-s -w" -buildmode=c-shared  -o cgo_demo.dylib ./
 ```
