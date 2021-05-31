@@ -86,3 +86,12 @@ CGO_CFLAGS=-mmacosx-version-min=[Sdk Version] CGO_LDFLAGS=-mmacosx-version-min=[
 #例子
 CGO_CFLAGS=-mmacosx-version-min=10.10 CGO_LDFLAGS=-mmacosx-version-min=10.10 go build  -ldflags "-s -w" -buildmode=c-shared  -o cgo_demo.dylib ./
 ```
+
+## 注释方式指定连接参数
+```shell
+#cgo CFLAGS: -x objective-c
+#cgo LDFLAGS: -framework Foundation
+#cgo LDFLAGS: -framework Security
+```
+
+ 
